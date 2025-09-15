@@ -45,5 +45,16 @@ namespace ShopTARge24.ApplicationServices.Services
 
             return result;
         }
+
+        public async Task<Spaceships> Delete(Guid id)
+        {
+            var result = await _context.Spaceships
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            _context.Spaceships.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return result;
+        }
     }
 }
