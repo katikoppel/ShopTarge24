@@ -31,5 +31,13 @@ namespace ShopTARge24.Controllers
 
             return View(result);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            KindergartenCreateViewModel result = new();
+
+            return View("Create", result);
+        }
     }
 }
