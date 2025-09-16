@@ -31,6 +31,9 @@
                     <td>@kindergarten.ChildrenCount</td>
                     <td>@kindergarten.KindergartenName</td>
                     <td>@kindergarten.TeacherName</td>
+                    <td>
+                        <a asp-action="delete" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-danger">Delete</a>
+                    </td>
                 </tr>
                 rowNumber += 1;
             }
