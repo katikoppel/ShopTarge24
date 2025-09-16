@@ -22,7 +22,11 @@ namespace ShopTARge24.Controllers
 
                 .Select(x => new KindergartenIndexViewModel
                 {
-
+                    Id = x.Id,
+                    GroupName = x.GroupName,
+                    ChildrenCount = x.ChildrenCount,
+                    KindergartenName = x.KindergartenName,
+                    TeacherName = x.TeacherName
                 });
 
             return View(result);
