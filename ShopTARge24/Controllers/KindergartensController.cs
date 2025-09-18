@@ -93,5 +93,19 @@ namespace ShopTARge24.Controllers
 
             return View(vm);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var kindergarten = await _kindergartenServices.Delete(id);
+
+            if (kindergarten == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
