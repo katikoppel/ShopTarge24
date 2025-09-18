@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
-using ShopTARge24.Data.Migrations;
-
 
 namespace ShopTARge24.ApplicationServices.Services
 {
@@ -19,9 +18,9 @@ namespace ShopTARge24.ApplicationServices.Services
             _context = context;
         }
 
-        public async Task<Kindergartens> Create(KindergartenDto dto)
+        public async Task<Kindergarten> Create(KindergartenDto dto)
         {
-            Kindergartens kindergartens = new Kindergartens();
+            Kindergarten kindergartens = new Kindergarten();
 
             kindergartens.Id = Guid.NewGuid();
             kindergartens.GroupName = dto.GroupName;
@@ -37,9 +36,9 @@ namespace ShopTARge24.ApplicationServices.Services
             return kindergartens;
         }
 
-        public async Task<Kindergartens> Update(KindergartenDto dto)
+        public async Task<Kindergarten> Update(KindergartenDto dto)
         {
-            Kindergartens kindergartens = new Kindergartens();
+            Kindergarten kindergartens = new Kindergarten();
 
             kindergartens.Id = dto.Id;
             kindergartens.GroupName = dto.GroupName;
@@ -55,7 +54,7 @@ namespace ShopTARge24.ApplicationServices.Services
             return kindergartens;
         }
 
-        public async Task<Kindergartens> DetailAsync(Guid id)
+        public async Task<Kindergarten> DetailAsync(Guid id)
         {
             var result = await _context.Kindergartens
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -63,7 +62,7 @@ namespace ShopTARge24.ApplicationServices.Services
             return result;
         }
 
-        public async Task<Kindergartens> Delete(Guid id)
+        public async Task<Kindergarten> Delete(Guid id)
         {
             var result = await _context.Kindergartens
                 .FirstOrDefaultAsync(x => x.Id == id);
