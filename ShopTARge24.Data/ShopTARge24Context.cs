@@ -11,8 +11,8 @@ namespace ShopTARge24.Data
         public ShopTARge24Context(DbContextOptions<ShopTARge24Context> options)
             : base(options) { }
 
-            public DbSet<Spaceships> Spaceships { get; set; }
+        public DbSet<Spaceships> Spaceships { get; set; }
 
-            public DbSet<Kindergarten> Kindergartens { get; set; }
+        public DbSet<Kindergarten> Kindergartens { get; set; }
     }
 }

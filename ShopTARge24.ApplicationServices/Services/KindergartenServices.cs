@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
@@ -50,7 +49,7 @@ namespace ShopTARge24.ApplicationServices.Services
             kindergartens.CreatedAt = dto.CreatedAt;
             kindergartens.UpdatedAt = DateTime.Now;
 
-            _context.Spaceships.Update(kindergartens);
+            _context.Kindergartens.Update(kindergartens);
             await _context.SaveChangesAsync();
 
             return kindergartens;

@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using ShopTARge24.ApplicationServices.Services;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Models.Kindergartens;
-using ShopTARge24.Models.Spaceships;
 
 namespace ShopTARge24.Controllers
 {
@@ -45,7 +42,7 @@ namespace ShopTARge24.Controllers
         {
             KindergartenCreateUpdateViewModel result = new();
 
-            return View("Create", result);
+            return View("CreateUpdate", result);
         }
 
         [HttpPost]
@@ -94,6 +91,31 @@ namespace ShopTARge24.Controllers
 
             return View("CreateUpdate", vm);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(KindergartenCreateUpdateViewModel vm)
+        {
+            var dto = new KindergartenDto()
+            {
+                Id = vm.Id,
+                GroupName = vm.GroupName,
+                ChildrenCount = vm.ChildrenCount,
+                KindergartenName = vm.KindergartenName,
+                TeacherName = vm.TeacherName,
+                CreatedAt = vm.CreatedAt,
+                UpdatedAt = vm.UpdatedAt
+            };
+
+            var result = await _kindergartenServices.Update(dto);
+
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
 
         [HttpGet]

@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24", "ShopTARge24\ShopTARge24.csproj", "{231B3EA9-75B9-4728-BE7D-054C078AD5A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2ACE56E2-5696-460F-8877-670BBA8F7987} = {2ACE56E2-5696-460F-8877-670BBA8F7987}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24.ApplicationServices", "ShopTARge24.ApplicationServices\ShopTARge24.ApplicationServices.csproj", "{7EFC278D-8AE8-424D-A29B-960B2FB007B4}"
 EndProject

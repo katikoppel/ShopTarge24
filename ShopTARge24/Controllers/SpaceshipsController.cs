@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using ShopTARge24.Core.Domain;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
@@ -27,7 +25,7 @@ namespace ShopTARge24.Controllers
         {
             var result = _context.Spaceships
                 .Select(x => new SpaceshipIndexViewModel
-                {   
+                {
                     Id = x.Id,
                     Name = x.Name,
                     Classification = x.Classification,
@@ -164,7 +162,7 @@ namespace ShopTARge24.Controllers
             //kasutada service classi meetodit, et info kätte saada
             var spaceship = await _spaceshipServices.DetailAsync(id);
 
-            if(spaceship == null)
+            if (spaceship == null)
             {
                 return NotFound();
             }
