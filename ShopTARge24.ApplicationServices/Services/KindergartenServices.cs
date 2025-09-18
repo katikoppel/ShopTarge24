@@ -38,6 +38,24 @@ namespace ShopTARge24.ApplicationServices.Services
             return kindergartens;
         }
 
+        public async Task<Kindergartens> Update(KindergartenDto dto)
+        {
+            Kindergartens kindergartens = new Kindergartens();
+
+            kindergartens.Id = dto.Id;
+            kindergartens.GroupName = dto.GroupName;
+            kindergartens.ChildrenCount = dto.ChildrenCount;
+            kindergartens.KindergartenName = dto.KindergartenName;
+            kindergartens.TeacherName = dto.TeacherName;
+            kindergartens.CreatedAt = dto.CreatedAt;
+            kindergartens.UpdatedAt = DateTime.Now;
+
+            _context.Spaceships.Update(kindergartens);
+            await _context.SaveChangesAsync();
+
+            return kindergartens;
+        }
+
         public async Task<Kindergartens> DetailAsync(Guid id)
         {
             var result = await _context.Kindergartens

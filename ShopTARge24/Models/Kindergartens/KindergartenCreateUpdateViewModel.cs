@@ -1,6 +1,6 @@
 ﻿namespace ShopTARge24.Models.Kindergartens
 {
-    public class KindergartenCreateViewModel
+    public class KindergartenCreateUpdateViewModel
     {
         public Guid Id { get; set; }
         public string GroupName { get; set; }
