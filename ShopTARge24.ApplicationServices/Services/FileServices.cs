@@ -2,6 +2,7 @@
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.ServiceInterface;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using ShopTARge24.Data;
 
 namespace ShopTARge24.ApplicationServices.Services
