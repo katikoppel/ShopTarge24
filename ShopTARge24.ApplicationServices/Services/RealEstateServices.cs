@@ -47,7 +47,7 @@ namespace ShopTARge24.ApplicationServices.Services
             realEstate.CreatedAt = dto.CreatedAt;
             realEstate.ModifiedAt = DateTime.Now;
 
-            _context.Spaceships.Update(realEstate);
+            _context.RealEstates.Update(realEstate);
             await _context.SaveChangesAsync();
 
             return realEstate;
