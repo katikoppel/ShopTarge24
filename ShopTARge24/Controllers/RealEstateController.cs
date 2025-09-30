@@ -34,7 +34,7 @@ namespace ShopTARge24.Controllers
                     BuildingType = x.BuildingType
                 });
 
-            return View();
+            return View(result);
         }
 
         [HttpGet]
