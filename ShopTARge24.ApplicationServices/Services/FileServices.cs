@@ -98,5 +98,10 @@ namespace ShopTARge24.ApplicationServices.Services
 
             return null;
         }
+
+        public void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain)
+        {
+
+        }
     }
 }
