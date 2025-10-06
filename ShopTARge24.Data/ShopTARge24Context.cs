@@ -14,5 +14,6 @@ namespace ShopTARge24.Data
             public DbSet<Spaceships> Spaceships { get; set; }
             public DbSet<FileToApi> FileToApis { get; set; }
             public DbSet<RealEstate> RealEstates { get; set; }
-        }
+            public DbSet<FileToDatabase> FileToDatabases { get; set; }
+    }
 }
