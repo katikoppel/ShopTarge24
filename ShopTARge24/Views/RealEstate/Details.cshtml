@@ -54,6 +54,12 @@
 		</div>
 	</dl>
 
+	@foreach (var images in Model.Images)
+	{
+		<partial name="_Images" model="images" />
+	}
+
+
 	<hr />
 	<a asp-action="Index" asp-controller="realEstate" class="btn btn-success">Back</a>
 </div>
