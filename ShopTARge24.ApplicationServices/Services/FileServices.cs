@@ -18,7 +18,7 @@ namespace ShopTARge24.ApplicationServices.Services
             _context = context;
         }
 
-        public void UploadFilesToDatabase(KindergartenDto dto, Kindergarten domain)
+        public void KindergartenUploadFilesToDatabase(KindergartenDto dto, Kindergarten domain)
         {
             //toimub kontroll, kas on vähemalt üks fail või mitu
             if (dto.Files != null && dto.Files.Count > 0)

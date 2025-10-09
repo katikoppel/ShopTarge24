@@ -36,7 +36,7 @@ namespace ShopTARge24.ApplicationServices.Services
 
             if (dto.Files != null)
             {
-                _fileServices.UploadFilesToDatabase(dto, kindergartens);
+                _fileServices.KindergartenUploadFilesToDatabase(dto, kindergartens);
             }
 
             await _context.Kindergartens.AddAsync(kindergartens);
