@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShopTARge24.ApplicationServices.Services;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Models.Kindergartens;
-using ShopTARge24.Models.Spaceships;
 
 namespace ShopTARge24.Controllers
 {
@@ -61,12 +61,12 @@ namespace ShopTARge24.Controllers
                 UpdatedAt = vm.UpdatedAt,
                 Files = vm.Files,
                 Image = vm.Images
-                    .Select(x => new FileToDatabaseDto
+                    .Select(x => new KindergartenFileToDatabaseDto
                     {
                         Id = x.Id,
                         ImageData = x.ImageData,
                         ImageTitle = x.ImageTitle,
-                        RealEstateId = x.RealEstateId
+                        KindergartenId = x.KindergartenId
                     }).ToArray()
             };
 
@@ -120,12 +120,12 @@ namespace ShopTARge24.Controllers
                 UpdatedAt = vm.UpdatedAt,
                 Files = vm.Files,
                 Image = vm.Images
-                    .Select(x => new FileToDatabaseDto
+                    .Select(x => new KindergartenFileToDatabaseDto
                     {
                         Id = x.Id,
                         ImageData = x.ImageData,
                         ImageTitle = x.ImageTitle,
-                        RealEstateId = x.RealEstateId
+                        KindergartenId = x.KindergartenId
                     }).ToArray()
             };
 
@@ -210,7 +210,7 @@ namespace ShopTARge24.Controllers
 
         private async Task<KindergartenImageViewModel[]> FileFromDatabase(Guid id)
         {
-            return await _context.FileToDatabases
+            return await _context.KindergartenFileToDatabases
                 .Where(x => x.KindergartenId == id)
                 .Select(y => new KindergartenImageViewModel
                 {

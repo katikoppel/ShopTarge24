@@ -8,8 +8,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<ISpaceshipServices, SpaceshipServices>();
-
 builder.Services.AddScoped<IKindergartenServices, KindergartenServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
 

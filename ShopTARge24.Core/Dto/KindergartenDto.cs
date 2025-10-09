@@ -10,8 +10,8 @@ namespace ShopTARge24.Core.Dto
         public string KindergartenName { get; set; }
         public string TeacherName { get; set; }
         public List<IFormFile> Files { get; set; }
-        public IEnumerable<FileToDatabaseDto> Image { get; set; }
-            = new List<FileToDatabaseDto>();
+        public IEnumerable<KindergartenFileToDatabaseDto> Image { get; set; }
+            = new List<KindergartenFileToDatabaseDto>();
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

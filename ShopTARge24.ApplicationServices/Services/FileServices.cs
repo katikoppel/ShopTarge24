@@ -29,18 +29,18 @@ namespace ShopTARge24.ApplicationServices.Services
                     //foreachi sees tuleb kasutada using-t
                     using (var target = new MemoryStream())
                     {
-                        FileToDatabase files = new FileToDatabase()
+                        KindergartenFileToDatabase files = new KindergartenFileToDatabase()
                         {
                             Id = Guid.NewGuid(),
                             ImageTitle = file.FileName,
-                            RealEstateId = domain.Id
+                            KindergartenId = domain.Id
                         };
 
                         //andmed salvestada andmebaasi
                         file.CopyTo(target);
                         files.ImageData = target.ToArray();
 
-                        _context.FileToDatabases.Add(files);
+                        _context.KindergartenFileToDatabases.Add(files);
                     }
                 }
             }

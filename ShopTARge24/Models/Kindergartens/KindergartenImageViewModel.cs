@@ -1,6 +1,6 @@
 ﻿namespace ShopTARge24.Models.Kindergartens
 {
-    public class RealEstateImageViewModel
+    public class KindergartenImageViewModel
     {
         public Guid Id { get; set; }
         public string? ImageTitle { get; set; }

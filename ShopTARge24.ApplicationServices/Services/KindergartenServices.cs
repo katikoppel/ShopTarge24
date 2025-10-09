@@ -4,7 +4,6 @@ using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
-using ShopTARge24.Data.Migrations;
 
 namespace ShopTARge24.ApplicationServices.Services
 {
