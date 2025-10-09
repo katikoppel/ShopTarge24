@@ -1,21 +1,26 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Xml;
+using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
+using ShopTARge24.Data.Migrations;
 
 namespace ShopTARge24.ApplicationServices.Services
 {
     public class KindergartenServices : IKindergartenServices
     {
         private readonly ShopTARge24Context _context;
+        private readonly IFileServices _fileServices;
 
         public KindergartenServices
             (
-                ShopTARge24Context context
+                ShopTARge24Context context,
+                IFileServices fileServices
             )
         {
             _context = context;
+            _fileServices = fileServices;
         }
 
         public async Task<Kindergarten> Create(KindergartenDto dto)
@@ -29,6 +34,11 @@ namespace ShopTARge24.ApplicationServices.Services
             kindergartens.TeacherName = dto.TeacherName;
             kindergartens.CreatedAt = DateTime.Now;
             kindergartens.UpdatedAt = DateTime.Now;
+
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, kindergartens);
+            }
 
             await _context.Kindergartens.AddAsync(kindergartens);
             await _context.SaveChangesAsync();

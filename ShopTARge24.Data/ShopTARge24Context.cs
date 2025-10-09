@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
-
+using ShopTARge24.Data.Migrations;
 
 
 namespace ShopTARge24.Data
@@ -14,5 +14,6 @@ namespace ShopTARge24.Data
         public DbSet<Spaceships> Spaceships { get; set; }
 
         public DbSet<Kindergarten> Kindergartens { get; set; }
+        public DbSet<FileToDatabase> FileToDatabases { get; set; }
     }
 }
