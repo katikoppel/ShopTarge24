@@ -5,6 +5,5 @@ namespace ShopTARge24.Core.ServiceInterface
 {
     public interface IFileServices
     {
-        void KindergartenUploadFilesToDatabase(KindergartenDto dto, Kindergarten domain);
     }
 }
