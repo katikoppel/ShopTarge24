@@ -8,7 +8,8 @@ namespace ShopTARge24.ApplicationServices.Services
     {
         public async Task<AccuLocationWeatherResultDto> AccuWeatherResult(AccuLocationWeatherResultDto dto)
         {
-            var response = $"https://api.weatherapi.com/v1/current.json";
+            string apiKey = "";
+            var response = $"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={apiKey}&q={dto.CityName}";
 
             using (var client = new HttpClient())
             {
@@ -17,6 +18,8 @@ namespace ShopTARge24.ApplicationServices.Services
 
                 List<AccuLocationRootDto> weatherData =
                     JsonSerializer.Deserialize<List<AccuLocationRootDto>>(json);
+
+                dto.CityName = weatherData[0].;
 
             }
 
