@@ -8,6 +8,7 @@ namespace ShopTARge24.ApplicationServices.Services
     {
         public async Task<AccuLocationWeatherResultDto> AccuWeatherResult(AccuLocationWeatherResultDto dto)
         {
+            //https://developer.accuweather.com/core-weather/text-search?lang=shell#city-search
             string apiKey = "";
             var response = $"http://dataservice.accuweather.com/locations/v1/cities/search?apikey={apiKey}&q={dto.CityName}";
 
