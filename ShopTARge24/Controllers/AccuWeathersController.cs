@@ -40,8 +40,8 @@ namespace ShopTARge24.Controllers
             AccuLocationWeatherResultDto dto = new();
             dto.CityName = city;
 
-            _weatherForecastServices.AccuWeatherResult(dto);
-            //_weatherForecastServices.AccuWeatherResultWebClient(dto);
+            //_weatherForecastServices.AccuWeatherResult(dto);
+            _weatherForecastServices.AccuWeatherResultWebClient(dto);
             AccuWeatherViewModel vm = new();
             //vm.CityName = dto.CityName;
             vm.EffectiveDate = dto.EffectiveDate;
