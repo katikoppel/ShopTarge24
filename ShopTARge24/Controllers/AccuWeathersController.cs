@@ -41,9 +41,11 @@ namespace ShopTARge24.Controllers
             dto.CityName = city;
 
             _weatherForecastServices.AccuWeatherResult(dto);
+            AccuWeatherViewModel vm = new();
+            vm.CityName = dto.CityName;
+            vm.TempMinCelsius = dto.TempMinCelsius;
 
-
-            return View(dto);
+            return View(vm);
         }
     }
 }
