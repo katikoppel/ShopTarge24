@@ -1,0 +1,49 @@
+﻿@model ShopTARge24.Models.OpenWeathers.OpenWeatherViewModel
+
+<div class="container mt-4">
+    <h2>Current weather in:</h2>
+    <h2>@Html.DisplayFor(model => model.CityName)</h2>
+    <hr />
+    <dl class="row text-dark">
+        <div>
+            <dt class="col-sm-3">Temperature:</dt>
+            <dd class="col-sm-9">@Model.Temperature °C</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Description:</dt>
+            <dd class="col-sm-9">@Model.Description</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Feels like:</dt>
+            <dd class="col-sm-9">@Model.FeelsLike °C</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Min temperature:</dt>
+            <dd class="col-sm-9">@Model.TempMin °C</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Max temperature:</dt>
+            <dd class="col-sm-9">@Model.TempMax °C</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Wind speed:</dt>
+            <dd class="col-sm-9">@Model.WindSpeed m/s</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Wind gusts:</dt>
+            <dd class="col-sm-9">@Model.WindGust m/s</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Rain:</dt>
+            <dd class="col-sm-9">@Model.Rain1h mm</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Cloudiness:</dt>
+            <dd class="col-sm-9">@Model.Cloudiness %</dd>
+        </div>
+        <div>
+            <dt class="col-sm-3">Visibility:</dt>
+            <dd class="col-sm-9">@Model.Visibility m</dd>
+        </div>
+    </dl>
+</div>
