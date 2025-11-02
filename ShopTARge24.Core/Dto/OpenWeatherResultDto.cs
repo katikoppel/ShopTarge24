@@ -21,7 +21,7 @@ namespace ShopTARge24.Core.Dto.OpenWeatherDto
         public double WindSpeed { get; set; }
         public int WindDegrees { get; set; }
         public double WindGust { get; set; }
-        public double Rain1h { get; set; }
+        public double? Rain1h { get; set; }
         public int Cloudiness { get; set; }
         public int Visibility { get; set; }
         public long Sunrise { get; set; }

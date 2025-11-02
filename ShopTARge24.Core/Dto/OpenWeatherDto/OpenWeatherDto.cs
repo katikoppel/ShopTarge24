@@ -118,7 +118,7 @@ namespace ShopTARge24.Core.Dto.OpenWeatherDto
     public class RainDto
     {
         [JsonProperty("1h")]
-        public double OneHour { get; set; }
+        public double? OneHour { get; set; }
     }
 
     public class CloudsDto
