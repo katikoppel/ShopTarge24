@@ -12,14 +12,14 @@
 		</div>
 	</dl>
 
-	<dl class="row">
+	<dl id="testIdNameDetails" class="row">
 		<div class="form-group row">
 			<label asp-for="Name" class="col-sm-2 col-form-label"></label>
 			@Html.DisplayFor(model => model.Name)
 		</div>
 	</dl>
 
-	<dl class="row">
+	<dl id="testIdClassificationDetails" class="row">
 		<div class="form-group row">
 			<label asp-for="Classification" class="col-sm-2 col-form-label"></label>
 			@Html.DisplayFor(model => model.Classification)
@@ -67,6 +67,6 @@
 	}
 
 	<hr />
-	<a asp-action="Index" asp-controller="spaceships" class="btn btn-danger">Back</a>
+	<a id="testIdIndexDetails" asp-action="Index" asp-controller="spaceships" class="btn btn-danger">Back</a>
 </div>
 
