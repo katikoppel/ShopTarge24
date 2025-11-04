@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24", "ShopTARge24\ShopTARge24.csproj", "{231B3EA9-75B9-4728-BE7D-054C078AD5A1}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24.Core", "ShopTARge24.Core\ShopTARge24.Core.csproj", "{2ACE56E2-5696-460F-8877-670BBA8F7987}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24.Data", "ShopTARge24.Data\ShopTARge24.Data.csproj", "{749C4CC3-67F7-482D-8FF2-6B40050A4E61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopTARge24.RealEstateTest", "ShopTARge24.RealEstateTest\ShopTARge24.RealEstateTest.csproj", "{048DA63C-8BD8-45FB-9BB7-7DC455E3250A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{749C4CC3-67F7-482D-8FF2-6B40050A4E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{749C4CC3-67F7-482D-8FF2-6B40050A4E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{749C4CC3-67F7-482D-8FF2-6B40050A4E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048DA63C-8BD8-45FB-9BB7-7DC455E3250A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048DA63C-8BD8-45FB-9BB7-7DC455E3250A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048DA63C-8BD8-45FB-9BB7-7DC455E3250A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048DA63C-8BD8-45FB-9BB7-7DC455E3250A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

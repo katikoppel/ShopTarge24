@@ -5,7 +5,7 @@
 }
 
 <div>
-	<a asp-action="create" asp-controller="Spaceships" type="submit" class="btn btn-primary">Create</a>
+	<a id="testIdCreate" asp-action="create" asp-controller="Spaceships" type="submit" class="btn btn-primary">Create</a>
 </div>
 
 <div class="h1">
@@ -27,14 +27,14 @@
 			{
 				<tr>
 					<td>@Nr</td>
-					<td>@spaceship.Name</td>
+					<td id="testIdDataName">@spaceship.Name</td>
 					<td>@spaceship.Classification</td>
 					<td>@spaceship.BuiltDate</td>
 					<td>@spaceship.Crew</td>
 					<td>
-						<a asp-action="details" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-outline-success">Details</a>
-						<a asp-action="update" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-outline-primary">Update</a>
-						<a asp-action="delete" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-outline-danger">Delete</a>
+						<a id="testIdDetailsIndex" asp-action="details" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-outline-success">Details</a>
+						<a id="testIdUpdateIndex" asp-action="update" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-outline-primary">Update</a>
+						<a id="testIdDeleteIndex" asp-action="delete" asp-controller="spaceships" asp-route-id="@spaceship.Id" class="btn btn-outline-danger">Delete</a>
 					</td>
 				</tr>
 
