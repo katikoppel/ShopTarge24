@@ -1,4 +1,9 @@
-﻿using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
@@ -21,51 +26,56 @@ namespace ShopTARge24.ApplicationServices.Services
             _context = context;
             _fileServices = fileServices;
         }
-
         public async Task<Kindergarten> Create(KindergartenDto dto)
         {
-            Kindergarten kindergartens = new Kindergarten();
+            Kindergarten kindergarten = new Kindergarten();
 
-            kindergartens.Id = Guid.NewGuid();
-            kindergartens.GroupName = dto.GroupName;
-            kindergartens.ChildrenCount = dto.ChildrenCount;
-            kindergartens.KindergartenName = dto.KindergartenName;
-            kindergartens.TeacherName = dto.TeacherName;
-            kindergartens.CreatedAt = DateTime.Now;
-            kindergartens.UpdatedAt = DateTime.Now;
+            kindergarten.Id = Guid.NewGuid();
+            kindergarten.GroupName = dto.GroupName;
+            kindergarten.ChildrenCount = dto.ChildrenCount;
+            kindergarten.KindergartenName = dto.KindergartenName;
+            kindergarten.TeacherName = dto.TeacherName;
+            kindergarten.CreatedAt = DateTime.Now;
+            kindergarten.UpdatedAt = DateTime.Now;
 
             if (dto.Files != null)
             {
-                _fileServices.KindergartenUploadFilesToDatabase(dto, kindergartens);
+                _fileServices.UploadFilesToDB(dto, kindergarten);
             }
 
-            await _context.Kindergartens.AddAsync(kindergartens);
+            await _context.Kindergarten.AddAsync(kindergarten);
             await _context.SaveChangesAsync();
 
-            return kindergartens;
+            return kindergarten;
         }
 
         public async Task<Kindergarten> Update(KindergartenDto dto)
         {
-            Kindergarten kindergartens = new Kindergarten();
+            Kindergarten kindergarten = new Kindergarten();
 
-            kindergartens.Id = dto.Id;
-            kindergartens.GroupName = dto.GroupName;
-            kindergartens.ChildrenCount = dto.ChildrenCount;
-            kindergartens.KindergartenName = dto.KindergartenName;
-            kindergartens.TeacherName = dto.TeacherName;
-            kindergartens.CreatedAt = dto.CreatedAt;
-            kindergartens.UpdatedAt = DateTime.Now;
+            kindergarten.Id = dto.Id;
+            kindergarten.GroupName = dto.GroupName;
+            kindergarten.ChildrenCount = dto.ChildrenCount;
+            kindergarten.KindergartenName = dto.KindergartenName;
+            kindergarten.TeacherName = dto.TeacherName;
+            kindergarten.CreatedAt = dto.CreatedAt;
+            kindergarten.UpdatedAt = DateTime.Now;
 
-            _context.Kindergartens.Update(kindergartens);
+            if (dto.Files != null)
+            {
+                await _fileServices.UploadFilesToDB(dto, kindergarten);
+            }
+
+
+            _context.Kindergarten.Update(kindergarten);
             await _context.SaveChangesAsync();
 
-            return kindergartens;
+            return kindergarten;
         }
 
         public async Task<Kindergarten> DetailAsync(Guid id)
         {
-            var result = await _context.Kindergartens
+            var result = await _context.Kindergarten
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             return result;
@@ -73,13 +83,17 @@ namespace ShopTARge24.ApplicationServices.Services
 
         public async Task<Kindergarten> Delete(Guid id)
         {
-            var result = await _context.Kindergartens
-                .FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.Kindergartens.Remove(result);
+            var result = await _context.Kindergarten
+                    .FirstOrDefaultAsync(x => x.Id == id);
+
+            _fileServices.RemoveImagesFromDB(id);
+            _context.Kindergarten.Remove(result);
+
             await _context.SaveChangesAsync();
 
             return result;
         }
+
     }
 }

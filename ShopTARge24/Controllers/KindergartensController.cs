@@ -25,7 +25,7 @@ namespace ShopTARge24.Controllers
 
         public IActionResult Index()
         {
-            var result = _context.Kindergartens
+            var result = _context.Kindergarten
 
                 .Select(x => new KindergartenIndexViewModel
                 {

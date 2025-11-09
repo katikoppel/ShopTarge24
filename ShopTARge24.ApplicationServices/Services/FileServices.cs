@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using ShopTARge24.Core.Domain;
@@ -23,6 +28,11 @@ namespace ShopTARge24.ApplicationServices.Services
             _context = context;
         }
 
+        public void FilesToApi(SpaceshipDto dto, Spaceships domain)
+        {
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                if (!Directory.Exists(_webHost.ContentRootPath + "\\wwwroot\\multipleFileUpload\\"))
                 {
                     Directory.CreateDirectory(_webHost.ContentRootPath + "\\wwwroot\\multipleFileUpload\\");
                 }
@@ -105,18 +115,74 @@ namespace ShopTARge24.ApplicationServices.Services
                     //foreachi sees tuleb kasutada using-t
                     using (var target = new MemoryStream())
                     {
+                        FileToDatabase files = new FileToDatabase()
                         {
                             Id = Guid.NewGuid(),
                             ImageTitle = file.FileName,
+                            RealEstateId = domain.Id
                         };
 
                         //andmed salvestada andmebaasi
                         file.CopyTo(target);
                         files.ImageData = target.ToArray();
 
-                    }  
+                        _context.FileToDatabases.Add(files);
+                    }
                 }
             }
         }
+
+        public async Task UploadFilesToDB(KindergartenDto dto, Kindergarten domain)
+        {
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                foreach (var file in dto.Files)
+                {
+                    using (var target = new MemoryStream())
+                    {
+                        KindergartenFileToDatabase files = new KindergartenFileToDatabase()
+                        {
+                            Id = Guid.NewGuid(),
+                            ImageTitle = file.FileName,
+                            KindergartenId = domain.Id,
+                        };
+                        file.CopyTo(target);
+                        files.ImageData = target.ToArray();
+
+                        _context.KindergartenFileToDatabases.Add(files);
+                    }
+                }
+            }
+        }
+
+
+        public void RemoveImagesFromDB(Guid kindergartenId)
+        {
+            var files = _context.KindergartenFileToDatabases
+                .Where(f => f.KindergartenId == kindergartenId)
+                .ToList();
+
+            if (files.Any())
+            {
+                _context.KindergartenFileToDatabases.RemoveRange(files);
+                _context.SaveChanges();
+            }
+        }
+
+
+        public async Task RemoveImageFromDB(Guid imageId)
+        {
+            var image = await _context.KindergartenFileToDatabases
+                .FirstOrDefaultAsync(f => f.Id == imageId);
+
+            if (image != null)
+            {
+                _context.KindergartenFileToDatabases.Remove(image);
+                await _context.SaveChangesAsync();
+            }
+
+
+        }
+
     }
 }

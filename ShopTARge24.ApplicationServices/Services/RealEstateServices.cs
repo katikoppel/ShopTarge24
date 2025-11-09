@@ -38,7 +38,7 @@ namespace ShopTARge24.ApplicationServices.Services
                 _fileServices.UploadFilesToDatabase(dto, realEstate);
             }
 
-            await _context.RealEstates.AddAsync(realEstate);
+            await _context.RealEstate.AddAsync(realEstate);
             await _context.SaveChangesAsync();
 
             return realEstate;
@@ -56,7 +56,7 @@ namespace ShopTARge24.ApplicationServices.Services
             realEstate.CreatedAt = dto.CreatedAt;
             realEstate.ModifiedAt = DateTime.Now;
 
-            _context.RealEstates.Update(realEstate);
+            _context.RealEstate.Update(realEstate);
             await _context.SaveChangesAsync();
 
             return realEstate;
@@ -64,7 +64,7 @@ namespace ShopTARge24.ApplicationServices.Services
 
         public async Task<RealEstate> DetailAsync(Guid id)
         {
-            var result = await _context.RealEstates
+            var result = await _context.RealEstate
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             return result;
@@ -72,10 +72,10 @@ namespace ShopTARge24.ApplicationServices.Services
 
         public async Task<RealEstate> Delete(Guid id)
         {
-            var result = await _context.RealEstates
+            var result = await _context.RealEstate
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.RealEstates.Remove(result);
+            _context.RealEstate.Remove(result);
             await _context.SaveChangesAsync();
 
             return result;
