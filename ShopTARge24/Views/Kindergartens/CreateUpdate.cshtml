@@ -57,6 +57,20 @@ else
             </div>
         </div>
 
+        <div>
+            @foreach (var image in Model.Images)
+            {
+                <partial name="_Images" model="image" />
+                <a asp-action="RemoveImage"
+                   asp-controller="Kindergartens"
+                   asp-route-imageId="@image.Id"
+                   asp-route-kindergartenId="@Model.Id"
+                   class="btn btn-danger">
+                    Remove Image
+                </a>
+            }
+        </div>
+
         @if (Model.Id.HasValue)
         {
             <input asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Update" />
