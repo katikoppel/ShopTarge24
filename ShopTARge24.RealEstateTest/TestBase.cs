@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ShopTARge24.RealEstateTest.Macros;
-using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.ApplicationServices.Services;
+using ShopTARge24.Core.ServiceInterface;
+using ShopTARge24.Data;
+using ShopTARge24.RealEstateTest.Macros;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-using ShopTARge24.Data;
+using Microsoft.Extensions.Hosting;
+using Moq;
 
 namespace ShopTARge24.RealEstateTest
 {
