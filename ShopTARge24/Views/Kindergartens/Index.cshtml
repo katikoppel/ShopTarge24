@@ -5,7 +5,7 @@
 }
 
 <div>
-	<a asp-action="create" asp-controller="kindergartens" type="submit" class="btn btn-primary">Create</a>
+	<a id="testIdCreate" asp-action="create" asp-controller="kindergartens" type="submit" class="btn btn-primary">Create</a>
 </div>
 
 <div class="h1">
@@ -27,14 +27,14 @@
 			{
 				<tr>
 					<td>@Nr</td>
-					<td>@kindergarten.GroupName</td>
+					<td id="testIdDataName">@kindergarten.GroupName</td>
 					<td>@kindergarten.ChildrenCount</td>
 					<td>@kindergarten.KindergartenName</td>
 					<td>@kindergarten.TeacherName</td>
 					<td>
-						<a asp-action="details" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-success">Details</a>
-						<a asp-action="update" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-primary">Update</a>
-						<a asp-action="delete" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-danger">Delete</a>
+						<a id="testIdDetailsIndex" asp-action="details" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-success">Details</a>
+						<a id="testIdUpdateIndex" asp-action="update" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-primary">Update</a>
+						<a id="testIdDeleteIndex" asp-action="delete" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-danger">Delete</a>
 					</td>
 				</tr>
 

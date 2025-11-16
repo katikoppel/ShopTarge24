@@ -18,28 +18,28 @@ else
         <div class="form-group row">
             <label asp-for="GroupName" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input asp-for="GroupName" class="form-control" />
+                <input id="testIdGroupNameCU" asp-for="GroupName" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
             <label asp-for="ChildrenCount" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input asp-for="ChildrenCount" class="form-control" />
+                <input id="testIdChildrenCountCU" asp-for="ChildrenCount" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
             <label asp-for="KindergartenName" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input asp-for="KindergartenName" class="form-control" />
+                <input id="testIdKindergartenNameCU" asp-for="KindergartenName" class="form-control" />
             </div>
         </div>
 
         <div class="form-group row">
             <label asp-for="TeacherName" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
-                <input asp-for="TeacherName" class="form-control" />
+                <input id="testIdTeacherNameCU" asp-for="TeacherName" class="form-control" />
             </div>
         </div>
 
@@ -59,13 +59,13 @@ else
 
         @if (Model.Id.HasValue)
         {
-            <input asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Update" />
+            <input id="testIdUpdateCU" asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Update" />
         }
         else
         {
-            <input asp-action="create" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Create" />
+            <input id="testIdCreateCU" asp-action="create" asp-controller="kindergartens" type="submit" class="btn btn-success" value="Create" />
         }
 
-        <a asp-action="Index" asp-controller="kindergartens" class="btn btn-success">Back</a>
+        <a id="testIdIndexCU" asp-action="Index" asp-controller="kindergartens" class="btn btn-success">Back</a>
     </form>
 </div>
