@@ -11,11 +11,5 @@ namespace ShopTARge24.Core.ServiceInterface
 
         Task RemoveImageFromDB(Guid fileId);
 
-        void FilesToApi(SpaceshipDto dto, Spaceships domain);
-
-        Task<FileToApi> RemoveImageFromApi(FileToApiDto dto);
-        Task<List<FileToApi>> RemoveImagesFromApi(FileToApiDto[] dtos);
-        void UploadFilesToDatabase(RealEstateDto dto, RealEstate domain);
-
     }
 }
