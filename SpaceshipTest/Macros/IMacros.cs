@@ -1,0 +1,6 @@
+﻿namespace ShopTARge24.SpaceshipTest.Macros
+{
+    public interface IMacros
+    {
+    }
+}
