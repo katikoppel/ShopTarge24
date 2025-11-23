@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Moq;
+using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
@@ -402,6 +403,51 @@ namespace ShopTARge24.RealEstateTest
 
             Assert.Equal(dto.CreatedAt, domain.CreatedAt);
             Assert.NotEqual(dto.ModifiedAt, domain.ModifiedAt);
+        }
+
+        /// We check that after deleting the record, 
+        /// there are no rows left in FileToDatabases with this RealEstateId.
+        [Fact]
+        public async Task Should_DeleteRelatedImages_WhenDeleteRealEstate()
+        {
+            // Arrange
+            var dto = new RealEstateDto
+            {
+                Area = 55.0,
+                Location = "Tallinn",
+                RoomNumber = 2,
+                BuildingType = "Apartment",
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now
+            };
+
+            var created = await Svc<IRealEstateServices>().Create(dto);
+            var id = (Guid)created.Id;
+
+            var db = Svc<ShopTARge24Context>();
+            db.FileToDatabases.Add(new FileToDatabase
+            {
+                Id = Guid.NewGuid(),
+                RealEstateId = id,
+                ImageTitle = "kitchen.jpg",
+                ImageData = new byte[] { 1, 2, 3 }
+            });
+            db.FileToDatabases.Add(new FileToDatabase
+            {
+                Id = Guid.NewGuid(),
+                RealEstateId = id,
+                ImageTitle = "livingroom.jpg",
+                ImageData = new byte[] { 4, 5, 6 }
+            });
+            await db.SaveChangesAsync();
+
+            // Act
+            await Svc<IRealEstateServices>().Delete(id);
+
+            // Assert
+            var leftovers = db.FileToDatabases.Where(x => x.RealEstateId == id).ToList();
+
+            Assert.Empty(leftovers);
         }
 
 
