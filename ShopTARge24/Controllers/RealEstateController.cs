@@ -5,7 +5,6 @@ using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Models.RealEstate;
-using ShopTARge24.Models.Spaceships;
 
 namespace ShopTARge24.Controllers
 {
@@ -86,7 +85,7 @@ namespace ShopTARge24.Controllers
 
             if (realEstate == null)
             {
-                return NotFound();
+                return View("ItemNotFound", id);
             }
 
             RealEstateImageViewModel[] images = await FileFromDatabase(id);
@@ -145,7 +144,7 @@ namespace ShopTARge24.Controllers
 
             if (realEstate == null)
             {
-                return NotFound();
+                return View("ItemNotFound", id);
             }
 
             RealEstateImageViewModel[] images = await FileFromDatabase(id);
@@ -184,7 +183,7 @@ namespace ShopTARge24.Controllers
 
             if (realEstate == null)
             {
-                return NotFound();
+                return View("ItemNotFound", id);
             }
 
             RealEstateImageViewModel[] images = await FileFromDatabase(id);
