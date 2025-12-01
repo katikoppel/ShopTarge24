@@ -15,6 +15,7 @@ builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
 builder.Services.AddScoped<IChuckNorrisServices, ChuckNorrisServices>();
 builder.Services.AddScoped<IDrinkServices, DrinkServices>();
+builder.Services.AddScoped<IEmailServices, EmailServices>();
 
 builder.Services.AddDbContext<ShopTARge24Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
