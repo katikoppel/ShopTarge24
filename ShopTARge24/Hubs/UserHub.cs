@@ -19,10 +19,11 @@ namespace ShopTARge24.Hubs
             return base.OnDisconnectedAsync(exception);
         }
 
-        public async Task NewWindowLoaded()
+        public async Task<string> NewWindowLoaded(string name)
         {
             TotalViews++;
             await Clients.All.SendAsync("updateTotalViews", TotalViews);
+            return $"total views from {name}: {TotalViews} ";
         }
 
     }
