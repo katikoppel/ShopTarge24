@@ -21,6 +21,12 @@ function newWindowLoadedOnClient() {
 //Start connection
 function fulfilled() {
     //Do something on start
+    connectionDeathlyHallows.invoke("GetRaceStatus").then((raceCounter) => {
+        cloakSpan.innerText = raceCounter.cloak.toString();
+        stoneSpan.innerText = raceCounter.stone.toString();
+        wandSpan.innerText = raceCounter.wand.toString();
+    });
+
     console.log("Connection to User Hub Successful");
 }
 function rejected() {
