@@ -3,6 +3,7 @@ using Microsoft.Extensions.FileProviders;
 using ShopTARge24.ApplicationServices.Services;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
+using ShopTARge24.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddScoped<IWeatherForecastServices, WeatherForecastServices>();
 builder.Services.AddScoped<IChuckNorrisServices, ChuckNorrisServices>();
 builder.Services.AddScoped<IDrinkServices, DrinkServices>();
 builder.Services.AddScoped<IEmailServices, EmailServices>();
+
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<ShopTARge24Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -43,6 +46,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+
+app.MapRazorPages();
+app.MapHub<UserHub>("/userHub");
 
 
 app.Run();
