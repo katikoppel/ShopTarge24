@@ -48,7 +48,6 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 app.MapRazorPages();
-app.MapHub<UserHub>("/userHub");
-
+app.MapHub<UserHub>("/hubs/userCount");
 
 app.Run();
