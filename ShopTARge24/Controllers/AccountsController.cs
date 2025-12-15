@@ -4,12 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.Domain;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
+using ShopTARge24.Models;
 using ShopTARge24.Models.Accounts;
+using System.Diagnostics;
 
 namespace ShopTARge24.Controllers
 {
     public class AccountsController : Controller
     {
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailServices _emailServices;
@@ -44,7 +47,7 @@ namespace ShopTARge24.Controllers
                     UserName = vm.Email,
                     Name = vm.Name,
                     Email = vm.Email,
-                    City = vm.City
+                    City = vm.City,
                 };
 
                 var result = await _userManager.CreateAsync(user, vm.Password);
@@ -53,15 +56,15 @@ namespace ShopTARge24.Controllers
                 {
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    var confirmationLink = Url.Action("ConfirmEmail", "Accounts", new {userId = user.Id, token = token}, Request.Scheme);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Accounts", new { userId = user.Id, token = token }, Request.Scheme);
 
                     EmailTokenDto newsignup = new();
                     newsignup.Token = token;
-                    newsignup.Body = $"Please registrate your your account by: <a href=\"{confirmationLink}\">clicking here</a>";
+                    newsignup.Body = $"Please registrate your account by: <a href=\"{confirmationLink}\">clicking here</a>";
                     newsignup.Subject = "CRUD registration";
                     newsignup.To = user.Email;
 
-                    if(_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
                         return RedirectToAction("ListUsers", "Administrations");
                     }
@@ -71,14 +74,14 @@ namespace ShopTARge24.Controllers
                         [
                         "Area", "Accounts",
                         "Issue", "Success",
-                        "StatusMessage", "Registration Success",
+                        "StatusMessage", "Registration Sucesss",
                         "ActedOn", $"{vm.Email}",
                         "CreatedAccountData", $"{vm.Email}\n{vm.City}\n[password hidden]\n[password hidden]"
                         ];
                     ViewBag.ErrorDatas = errordatas;
                     ViewBag.ErrorTitle = "You have successfully registered";
-                    ViewBag.ErrorMessage = "Before you log in, please confirm your email from the link." +
-                        "\nwe have sent to your email address.";
+                    ViewBag.ErrorMessage = "Before you can log in, please confirm email from the link" +
+                        "\nwe have emailed to your email address.";
                     return View("ConfirmationEmailMessage");
                 }
 
@@ -88,6 +91,57 @@ namespace ShopTARge24.Controllers
                 }
             }
 
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"The user with id of {userId} is not valid";
+                return View("NotFound");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            List<string> errordatas =
+                        [
+                        "Area", "Accounts",
+                        "Issue", "Success",
+                        "StatusMessage", "Registration Sucesss",
+                        "ActedOn", $"{user.Email}",
+                        "CreatedAccountData", $"{user.Email}\n{user.City}\n[password hidden]\n[password hidden]"
+                        ];
+
+            if (result.Succeeded)
+            {
+                errordatas =
+                        [
+                        "Area", "Accounts",
+                        "Issue", "Success",
+                        "StatusMessage", "Registration Sucesss",
+                        "ActedOn", $"{user.Email}",
+                        "CreatedAccountData", $"{user.Email}\n{user.City}\n[password hidden]\n[password hidden]"
+                        ];
+                ViewBag.ErrorDatas = errordatas;
+                return View();
+            }
+
+            ViewBag.ErrorDatas = errordatas;
+            ViewBag.ErrorTitle = "Email cannot be confirmed";
+            ViewBag.ErrorMessage = $"The users email, with userid of {userId}, cannot be confirmed.";
+            return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
             return View();
         }
     }
