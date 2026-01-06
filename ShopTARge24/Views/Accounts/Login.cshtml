@@ -19,21 +19,36 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
-            <div class="form-group form-check">
+            <div class="form-group form-check mt-2">
                 <input asp-for="RememberMe" class="form-check-input" />
                 <label asp-for="RememberMe" class="form-check-label"></label>
             </div>
 
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary mt-2">Login</button>
 
-@*             <div class="mt-2">
+            <div class="mt-2">
                 <a asp-action="ForgotPassword">Forgot Password?</a>
-            </div> *@
+            </div>
         </form>
     </div>
 
     <div class="col-md-6">
         <h3>External Login</h3>
 		<hr />
+        <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+            <div>
+                <button type="submit" class="btn btn-outline-primary d-flex align-items-center gap-2" name="provider" value="Google">
+                    <img src="~/images/gmail.svg" width="18" />Log In
+                </button>
+            </div>
+        </form>
+        <br />
+        <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+            <div>
+                <button type="submit" class="btn btn-outline-primary d-flex align-items-center gap-2" name="provider" value="Facebook">
+                    <img src="~/images/facebook.svg" width="18"/> Log In
+                </button>
+            </div>
+        </form>
     </div>
 </div>

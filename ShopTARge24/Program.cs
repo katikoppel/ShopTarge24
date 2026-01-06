@@ -9,6 +9,8 @@ using ShopTARge24.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var configuration = builder.Configuration;
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -43,6 +45,25 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<ShopTARge24Context>()
     .AddDefaultTokenProviders()
     .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConnection");
+
+builder.Services.AddAuthentication()
+    .AddGoogle(googleOptions =>
+    {
+        googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"]
+            ?? throw new InvalidOperationException("Google ClientId not found.");
+
+        googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]
+            ?? throw new InvalidOperationException("Google ClientSecret not found.");
+    });
+
+builder.Services.AddAuthentication().AddFacebook(facebookOptions =>
+{
+    facebookOptions.AppId = configuration["Authentication:Facebook:AppId"]
+    ?? throw new InvalidOperationException("Facebook AppId not found.");
+
+    facebookOptions.AppSecret = configuration["Authentication:Facebook:AppSecret"]
+    ?? throw new InvalidOperationException("Facebook AppSecret not found.");
+});
 
 var app = builder.Build();
 

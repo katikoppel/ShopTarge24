@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
@@ -6,6 +7,7 @@ using ShopTARge24.Models.ChuckNorris;
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
     public class ChuckNorrisController : Controller
     {
         private readonly IChuckNorrisServices _chuckNorrisServices;

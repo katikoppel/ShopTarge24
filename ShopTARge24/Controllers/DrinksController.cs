@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Models.Drinks;
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
     public class DrinksController : Controller
     {
         private readonly IDrinkServices _drinkServices;

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Data;
 using ShopTARge24.Models.Email;
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
     public class EmailController : Controller
     {
         private readonly IEmailServices _emailServices;

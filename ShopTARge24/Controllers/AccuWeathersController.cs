@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopTARge24.Core.Dto;
 using ShopTARge24.Core.ServiceInterface;
 using ShopTARge24.Models.AccuWeathers;
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
     public class AccuWeathersController : Controller
     {
         private readonly IWeatherForecastServices _weatherForecastServices;

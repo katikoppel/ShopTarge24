@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using ShopTARge24.Hubs; 
 
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
     public class SignalRController : Controller
     {
         private readonly IHubContext<DeathlyHallowsHub> _deathlyHallowsHub;

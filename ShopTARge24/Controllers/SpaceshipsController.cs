@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopTARge24.Core.Domain;
@@ -9,6 +10,7 @@ using ShopTARge24.Models.Spaceships;
 
 namespace ShopTARge24.Controllers
 {
+    [Authorize]
     public class SpaceshipsController : Controller
     {
         private readonly ShopTARge24Context _context;

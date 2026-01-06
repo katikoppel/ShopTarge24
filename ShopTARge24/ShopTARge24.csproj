@@ -4,10 +4,13 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>58f3c78d-1034-49ce-9ff4-f37d9dc3d28a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.14.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="9.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.10" />
