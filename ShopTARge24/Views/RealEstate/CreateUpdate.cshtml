@@ -9,7 +9,6 @@ else
     <h1>Create</h1>
 }
 
-
 <div>
     <form method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -44,23 +43,55 @@ else
             <input class="form-control" asp-for="Files" multiple type="file" />
         </div>
 
-        <div>
-            @foreach (var images in Model.Images)
+        @if (Model.Images != null && Model.Images.Any())
+        {
+            <div class="d-flex flex-column gap-3">
+                @foreach (var images in Model.Images)
+                {
+                    <div class="image-row position-relative">
+                        <div class="image-preview">
+                            <partial name="_Images" model="images" />
+                        </div>
+                        <form asp-action="removeImage" asp-controller="realEstate" asp-route-imageId="@images.ImageId" method="post" class="m-0 remove-btn-form">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Remove image
+                            </button>
+                        </form>
+                    </div>
+                }
+            </div>
+        }
+
+        <div class="mt-4 d-flex gap-2">
+            @if (Model.Id.HasValue)
             {
-                <partial name="_Images" model="images" />
-                <input asp-action="removeImage" asp-controller="realEstate" asp-route-imageId="@images.ImageId" type="submit" class="btn btn-danger" value="Remove Image" />
+                <button asp-action="update" asp-controller="realEstate" type="submit" class="btn btn-primary">
+                    Update
+                </button>
             }
+            else
+            {
+                <button asp-action="create" asp-controller="realEstate" type="submit" class="btn btn-primary">
+                    Create
+                </button>
+            }
+
+            <a asp-action="Index" asp-controller="realEstate" class="btn btn-success">
+                Back
+            </a>
         </div>
-
-        @if (Model.Id.HasValue)
-        {
-            <input asp-action="update" asp-controller="realEstate" type="submit" class="btn btn-success" value="Update" />
-        }
-        else
-        {
-            <input asp-action="create" asp-controller="realEstate" type="submit" class="btn btn-success" value="Create" />
-        }
-
-        <a asp-action="Index" asp-controller="realEstate" class="btn btn-success">Back</a>
     </form>
 </div>
+
+<style>
+    .image-row {
+        display: inline-block;
+        padding-left: 110px;
+    }
+
+    .remove-btn-form {
+        position: absolute;
+        left: 0;
+        top: 32px;
+    }
+</style>
