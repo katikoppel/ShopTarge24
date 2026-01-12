@@ -1,33 +1,92 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+body {
+    background: var(--bg);
+    background-image: url("/images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #f8f9fa !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    color: #f8f9fa !important;
+}
+
+p, span, label, small, strong, em, li, td, th, div {
+    color: #f8f9fa !important;
+}
+
+a, a:visited {
+    color: #f8f9fa !important;
+    text-decoration: none;
+}
+
+    a:hover, a:focus {
+        color: #ffffff !important;
+        text-decoration: underline;
+    }
+
+.navbar .nav-link, .navbar .navbar-brand {
+    color: #f8f9fa !important;
+}
+
+    .navbar .nav-link:hover, .navbar .nav-link:focus {
+        color: #ffffff !important;
+    }
+
+.dropdown-menu-dark .dropdown-item, .dropdown-menu .dropdown-item {
+    color: #f8f9fa !important;
+}
+
+    .dropdown-menu-dark .dropdown-item:hover, .dropdown-menu-dark .dropdown-item:focus, .dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus {
+        color: #ffffff !important;
+        background-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+.form-control, .form-select, textarea {
+    color: #f8f9fa !important;
+    background-color: rgba(0,0,0,0.35) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+    .form-control::placeholder, textarea::placeholder {
+        color: rgba(255,255,255,0.7) !important;
+    }
+
+.card, .table {
+    color: #f8f9fa !important;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    text-align: start;
 }
 
 :root {
@@ -36,21 +95,14 @@ body {
     --shadow: 0 10px 30px rgba(0,0,0,.07);
     --shadow-sm: 0 6px 16px rgba(0,0,0,.06);
     --bg: #f2f4f5;
-    --panel: #ffffff;
-    --border: rgba(0,0,0,.08);
-}
-
-body {
-    background: var(--bg);
-}
-
-h1, h2, h3, h4, h5 {
-    font-weight: 500;
+    --panel: rgba(0,0,0,0.55);
+    --border: rgba(255,255,255,0.15);
 }
 
 .card {
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    background-color: var(--panel) !important;
 }
 
     .card.shadow-sm {
@@ -67,19 +119,12 @@ h1, h2, h3, h4, h5 {
     font-weight: 600;
 }
 
-.form-control, .form-select, textarea {
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    padding: .6rem .8rem;
-}
-
 .text-danger.small {
     display: block;
     margin-top: 4px;
 }
 
 .table {
-    background: var(--panel);
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
@@ -109,13 +154,22 @@ h1, h2, h3, h4, h5 {
 
 .page-subtitle {
     margin: 0;
-    color: var(--muted);
+    color: #f8f9fa !important;
 }
 
-a {
-    text-decoration: none;
+.dropdown-menu form {
+    margin: 0;
 }
 
-    a:hover {
-        text-decoration: underline;
-    }
+.dropdown-menu button.dropdown-item {
+    width: 100%;
+    text-align: left;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.table td{
+    color: #212529 !important;
+}
