@@ -1,54 +1,63 @@
 ﻿@model ShopTARge24.Models.Accounts.LoginViewModel
 
-<div class="row">
-    <div class="col-md-6">
-        <h3>Local Account Login</h3>
-		<hr />
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <form asp-action="Login" method="post">
-
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h3 class="card-title mb-3">Local Account Login</h3>
+                            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                            <form asp-action="Login" method="post">
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger small"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="form-label"></label>
+                                    <input asp-for="Password" class="form-control" type="password" />
+                                    <span asp-validation-for="Password" class="text-danger small"></span>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input asp-for="RememberMe" class="form-check-input" />
+                                    <label asp-for="RememberMe" class="form-check-label"></label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                                <div class="text-center mt-3">
+                                    <a asp-action="ForgotPassword" class="text-decoration-none">
+                                        Forgot Password?
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h3 class="card-title mb-3">External Login</h3>
+                            <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2" name="provider" value="Google">
+                                            <img src="~/images/gmail.svg" width="18" />
+                                            Google
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center gap-2" name="provider" value="Facebook">
+                                            <img src="~/images/facebook.svg" width="18" />
+                                            Facebook
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" type="password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-
-            <div class="form-group form-check mt-2">
-                <input asp-for="RememberMe" class="form-check-input" />
-                <label asp-for="RememberMe" class="form-check-label"></label>
-            </div>
-
-            <button type="submit" class="btn btn-primary mt-2">Login</button>
-
-            <div class="mt-2">
-                <a asp-action="ForgotPassword">Forgot Password?</a>
-            </div>
-        </form>
-    </div>
-
-    <div class="col-md-6">
-        <h3>External Login</h3>
-		<hr />
-        <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
-            <div>
-                <button type="submit" class="btn btn-outline-primary d-flex align-items-center gap-2" name="provider" value="Google">
-                    <img src="~/images/gmail.svg" width="18" />Log In
-                </button>
-            </div>
-        </form>
-        <br />
-        <form asp-controller="Accounts" asp-action="ExternalLogin" asp-route-returnUrl="@Context.Request.Query["ReturnUrl"]" method="post">
-            <div>
-                <button type="submit" class="btn btn-outline-primary d-flex align-items-center gap-2" name="provider" value="Facebook">
-                    <img src="~/images/facebook.svg" width="18"/> Log In
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
