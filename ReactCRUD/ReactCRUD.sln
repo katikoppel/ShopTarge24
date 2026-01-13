@@ -7,6 +7,10 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactcrud.client", "reactcr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactCRUD.Server", "ReactCRUD.Server\ReactCRUD.Server.csproj", "{9F5092CC-2209-487A-AD6A-6C7360A2413B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactCRUD.Data", "ReactCRUD.Data\ReactCRUD.Data.csproj", "{9C307879-615B-4BE0-94F7-38D95132384B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactCRUD.Core", "ReactCRUD.Core\ReactCRUD.Core.csproj", "{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{9F5092CC-2209-487A-AD6A-6C7360A2413B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F5092CC-2209-487A-AD6A-6C7360A2413B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F5092CC-2209-487A-AD6A-6C7360A2413B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C307879-615B-4BE0-94F7-38D95132384B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C307879-615B-4BE0-94F7-38D95132384B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C307879-615B-4BE0-94F7-38D95132384B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C307879-615B-4BE0-94F7-38D95132384B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
