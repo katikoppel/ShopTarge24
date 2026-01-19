@@ -31,7 +31,6 @@ namespace ReactCRUD.Server.Controllers
                 })
                 .ToList;
 
-
             return Ok(result);
         }
 
