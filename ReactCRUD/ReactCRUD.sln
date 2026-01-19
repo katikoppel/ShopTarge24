@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36511.14 d17.14
+VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "reactcrud.client", "reactcrud.client\reactcrud.client.esproj", "{250FC760-854F-3DBA-E406-7262EADA2AD1}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactCRUD.Data", "ReactCRUD.Data\ReactCRUD.Data.csproj", "{9C307879-615B-4BE0-94F7-38D95132384B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactCRUD.Core", "ReactCRUD.Core\ReactCRUD.Core.csproj", "{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactCRUD.ApplicationServices", "ReactCRUD.ApplicationServices\ReactCRUD.ApplicationServices.csproj", "{0C5C3D54-9B3D-4D32-B295-DDF565869690}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE988FCC-D069-4FEC-B2DA-7157A5CA2286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C5C3D54-9B3D-4D32-B295-DDF565869690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C5C3D54-9B3D-4D32-B295-DDF565869690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C5C3D54-9B3D-4D32-B295-DDF565869690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C5C3D54-9B3D-4D32-B295-DDF565869690}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

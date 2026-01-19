@@ -1,25 +1,27 @@
 import React, { useCallback, useEffect, useState } from "react";
-//import type { JSX } from "react/jsx-dev-runtime";
-
-interface School {
-    id: string;
-    name: string;
-    address: string;
-    studentCount: number;
-}
+import type { School } from "../types/school";
 
 function SchoolList() {
     const [schools, setSchools] = useState<School[]>([]);
 
-    //const fetchSchools = useCallback(async () => {
-    //    const response = await fetch("/api/schools");
-    //    const data = await response.json();
-    //    setSchools(data);
-    //}, []);
+    const fetchSchools = useCallback(async () => {
+        try {
+            const response = await fetch("/api/school");
+            if (response.ok) {
+                const data = await response.json();
+                setSchools(data);
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+        }
+    }, []);
 
     useEffect(() => {
-        populateSchoolData();
-    }, []);
+
+        (async () => {
+            await fetchSchools();
+        })();
+    }, [fetchSchools]);
 
     return (
         <table>
@@ -48,7 +50,7 @@ function SchoolList() {
 
 
     async function populateSchoolData() {
-        const response = await fetch("schoolsListViewModel");
+        const response = await fetch("schoolList");
         if (response.ok) {
             const data = await response.json();
             setSchools(data);
