@@ -10,7 +10,7 @@ using ShopTARge24.Models.Spaceships;
 
 namespace ShopTARge24.Controllers
 {
-//    [Authorize]
+    [Authorize]
     public class SpaceshipsController : Controller
     {
         private readonly ShopTARge24Context _context;
