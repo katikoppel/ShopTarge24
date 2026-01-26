@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\reactcrud.client\reactcrud.client.esproj" />
     <ProjectReference Include="..\ReactCRUD.Core\ReactCRUD.Core.csproj" />
     <ProjectReference Include="..\ReactCRUD.Data\ReactCRUD.Data.csproj" />
-    <ProjectReference Include="..\ReactCRUD.Server\ReactCRUD.Server.csproj" />
   </ItemGroup>
 
 </Project>

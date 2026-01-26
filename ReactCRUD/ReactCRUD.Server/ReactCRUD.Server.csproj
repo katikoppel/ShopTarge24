@@ -26,6 +26,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\ReactCRUD.Data\ReactCRUD.Data.csproj" />
+    <ProjectReference Include="..\ReactCRUD.ApplicationServices\ReactCRUD.ApplicationServices.csproj" />
   </ItemGroup>
 
 </Project>

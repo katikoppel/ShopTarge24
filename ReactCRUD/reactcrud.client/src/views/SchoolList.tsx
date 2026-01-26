@@ -1,8 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { School } from "../types/school";
+import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function SchoolList() {
     const [schools, setSchools] = useState<School[]>([]);
+    const navigate = useNavigate();
 
     const fetchSchools = useCallback(async () => {
         try {
@@ -17,22 +20,28 @@ function SchoolList() {
     }, []);
 
     useEffect(() => {
-
-        (async () => {
-            await fetchSchools();
-        })();
+        fetchSchools();
     }, [fetchSchools]);
 
     return (
-        <table>
-            <div>
-                <h1>School List</h1>
+        <div className="container">
+            <h1>School List</h1>
+
+            <button
+                onClick={() => navigate("/school/create")}
+                style={{ marginBottom: "20px" }}
+            >
+                Create New School
+            </button>
+
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Address</th>
                         <th>Student Count</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,20 +51,17 @@ function SchoolList() {
                             <td>{school.name}</td>
                             <td>{school.address}</td>
                             <td>{school.studentCount}</td>
+                            <td>
+                                <button onClick={() => navigate(`/details/${school.id}`)}>
+                                    Details
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
-            </div>
-        </table>);
-
-
-    async function populateSchoolData() {
-        const response = await fetch("schoolList");
-        if (response.ok) {
-            const data = await response.json();
-            setSchools(data);
-        }
-    }
+            </table>
+        </div>
+    );
 }
 
 export default SchoolList;

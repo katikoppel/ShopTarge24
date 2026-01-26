@@ -1,9 +1,11 @@
 using ReactCRUD.Data;
 using Microsoft.EntityFrameworkCore;
+using ReactCRUD.Core.ServiceInterface;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<ISchoolInterface, ReactCRUD.ApplicationServices.Services.SchoolServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
